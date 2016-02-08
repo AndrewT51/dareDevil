@@ -6,3 +6,30 @@ body {
 a {
   color: #00B7FF;
 }
+
+@media screen and (min-width: 768px){
+  #signupForm {
+    margin-top: 100px;
+  }
+}
+
+#landingPagePic {
+  margin-top: 100px;
+}
+
+.test {
+  border: red dotted 1px;
+}
+
+
+.innerInfoBox {
+  padding-left:5px;
+  margin: 10px auto;
+  background-color: lightgrey;
+  width:80%;
+  height:80%;
+}
+.innerInfoBox h3 {
+  padding-top: 5px;
+  text-align: center;
+}
