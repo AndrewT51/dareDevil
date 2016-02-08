@@ -1,4 +1,4 @@
-myApp.factory('webToken',function(){
+myApp.factory('store',function(){
   return {
     getToken : "",
     setToken: function(token) {

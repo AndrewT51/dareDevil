@@ -1,14 +1,16 @@
-myApp.controller('infoBox',function($scope,usrSvc,webToken){
-  var jwt = webToken.getToken;
-  usrSvc.getUserDetails(jwt)
+myApp.controller('infoBox',function($scope,usrSvc,store){
+  // this gets the JWT from the store factory and uses it
+  // to retrieve the personal data from the database.
+  var jwt = store.getToken;
+  var userId = usrSvc.openJWT(jwt)
+  usrSvc.getUserDetails(jwt,userId)
   .then(function success(user){
-    var myLocalDetails ={
+    $scope.myLocalDetails ={
       username: user.data.username,
-      fullname: user.data.fullname.join(''),
+      fullname: user.data.fullname.join(' '),
       email: user.data.email,
-      friendList: user.data.friends
+      friends: user.data.friends
     }
-    
   })
 
 })

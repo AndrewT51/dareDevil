@@ -10,3 +10,11 @@ var myApp = angular.module('myApp',['ui.router'])
   }
 })
 
+.directive('userSearch',function(){
+  return {
+    templateUrl: "../templates/searchPanel.html",
+    scope:true,
+    controller:"searchCtrl"
+  }
+})
+

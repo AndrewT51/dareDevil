@@ -1,7 +1,17 @@
-
+<div class="infoBox">
 <div class="innerInfoBox">
   <h3>Your details</h3>
-  <h4>Username:</h4><span>{{message}}</span>
-  <h4>Full name:</h4><span>{{}}</span>
-  <h4>Email:</h4><span>{{}}</span>
+  <h5>Username:</h5><span>{{myLocalDetails.username}}</span>
+  <h5>Full name:</h5><span>{{myLocalDetails.fullname}}</span>
+  <h5>Email:</h5><span>{{myLocalDetails.email}}</span>
+</div>
+
+<div class="innerInfoBox">
+  <h3>Your friends</h3>
+  <ul>
+    <li mg-repeat="friend in myLocalDetails.friends"></li>
+  </ul>
+</div>
+
+
 </div>

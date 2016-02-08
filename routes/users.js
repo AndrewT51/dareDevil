@@ -61,4 +61,10 @@ router.get('/members/:name', function(req,res){
   })
 })
 
+router.get('/userlist/:name',function(req,res){
+  User.find({username:req.params.name}, function(err, user){
+    res.send(user)
+  })
+})
+
 module.exports = router;

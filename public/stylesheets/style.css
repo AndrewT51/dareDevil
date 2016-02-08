@@ -24,6 +24,7 @@ a {
 
 .innerInfoBox {
   padding-left:5px;
+  padding-bottom: 10px;
   margin: 10px auto;
   background-color: lightgrey;
   width:80%;
