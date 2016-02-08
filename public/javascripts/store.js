@@ -1,8 +1,8 @@
 myApp.factory('webToken',function(){
   return {
-    getToken : false,
+    getToken : "",
     setToken: function(token) {
-      this.getToken = JSON.stringify(token) 
+      this.getToken = token.data
     }
   }
 })

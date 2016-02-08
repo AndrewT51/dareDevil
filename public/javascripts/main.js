@@ -7,6 +7,6 @@ var myApp = angular.module('myApp',['ui.router'])
     templateUrl: "../templates/userInfo.html",
     scope:true,
     controller:"infoBox"
-      }
+  }
 })
 

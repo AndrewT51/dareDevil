@@ -9,13 +9,13 @@
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" placeholder="Username" ng-model="username" required="true">
       </fieldset>
-      <fieldset class="form-group" ng-if="!memberStatus">
+      <fieldset class="form-group" ng-show="!memberStatus">
         <label for="fullname">Full name</label>
-        <input type="text" class="form-control" id="fullname" placeholder="Full name" ng-model="fullname" required="true">
+        <input type="text" class="form-control" id="fullname" placeholder="Full name" ng-model="fullname" >
       </fieldset>
-      <fieldset class="form-group" ng-if="!memberStatus">
+      <fieldset class="form-group" ng-show="!memberStatus">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Email address" ng-model="email" required="true">
+        <input type="email" class="form-control" id="email" placeholder="Email address" ng-model="email" >
       </fieldset>
       <fieldset class="form-group">
         <label for="password">Password</label>

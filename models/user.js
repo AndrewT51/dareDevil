@@ -36,7 +36,7 @@ User.methods.generateJWT = function(){
 // And the JWT will have the following data MD5 encoded in it
   return jwt.sign({
     _id: this._id,
-    name: this.username,
+    username: this.username,
     exp: parseInt(exp.getTime()/1000)
   }, "secret");
 };

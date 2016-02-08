@@ -7,12 +7,14 @@ myApp.controller('homeCtrl', function($scope,usrSvc,webToken,$state){
       username: $scope.username,
       password: $scope.password,
       fullname: $scope.fullname,
-      email: $scope.email,
+      email: $scope.email
     }
     signUpOrIn = $scope.memberStatus ? "signin" : "signup";
+    console.log(wrapObj)
     usrSvc[signUpOrIn](wrapObj)
     .then(function success(data){
-      console.log(data)
+      // The JWT is returned in the response and stored in a factory for global access
+      // and then the page is redirected to the users page
       webToken.setToken(data)
       $state.go('profile')
 

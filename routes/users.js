@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user')
+var User = require('../models/user');
+var auth = require('./authMiddleware');
 
 
 /* GET users listing. */
@@ -10,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/signup', function(req,res){
+  console.log(req.body)
   var user = new User();
   user.username= req.body.username;
   user.email= req.body.email;
@@ -35,6 +37,16 @@ router.post('/signin', function(req,res){
       var jwt = user.generateJWT();
       res.send(jwt); 
     }
+  })
+})
+
+router.get('/mydetails/:id',auth, function(req,res){
+  User.findById(req.params.id,function(err,user){
+    if(err){
+      res.send(err)
+    }
+    res.send(user)
+
   })
 })
 
