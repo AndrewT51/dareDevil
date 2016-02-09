@@ -3,6 +3,10 @@ myApp.factory('store',function(){
     getToken : "",
     setToken: function(token) {
       this.getToken = token.data
+    },
+    getId : "",
+    setId: function(userId){
+      this.getId = userId 
     }
   }
 })

@@ -3,6 +3,7 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
   // to retrieve the personal data from the database.
   var jwt = store.getToken;
   var userId = usrSvc.openJWT(jwt)
+  store.setId(userId);
   usrSvc.getUserDetails(jwt,userId)
   .then(function success(user){
     $scope.myLocalDetails ={
@@ -12,5 +13,17 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
       friends: user.data.friends
     }
   })
+  $scope.usernameEdit = false;
+  $scope.name = false;
+  $scope.email=false;
+  $scope.changeUsername = function(){
+    $scope.usernameEdit = !$scope.usernameEdit;
+  }
+  $scope.changeEmail = function(){
+    $scope.emailEdit = !$scope.emailEdit;
+  }
+  $scope.changeFullname = function(){
+    $scope.nameEdit = !$scope.nameEdit;
+  }
 
 })

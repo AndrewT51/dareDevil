@@ -18,3 +18,10 @@ var myApp = angular.module('myApp',['ui.router'])
   }
 })
 
+.directive('otherUsers',function(){
+  return {
+    templateUrl: "../templates/otherUsersPanel.html",
+    scope:true,
+    controller:"searchCtrl"
+  }
+})

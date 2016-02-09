@@ -1,15 +1,40 @@
 <div class="infoBox">
-<div class="innerInfoBox">
-  <h3>Your details</h3>
-  <h5>Username:</h5><span>{{myLocalDetails.username}}</span>
-  <h5>Full name:</h5><span>{{myLocalDetails.fullname}}</span>
-  <h5>Email:</h5><span>{{myLocalDetails.email}}</span>
-</div>
+  <div class="innerInfoBox">
+    <h3>Your details</h3>
+    <table>
+      <tr>
+        <td class="col-xs-8" ng-if="!usernameEdit">{{myLocalDetails.username}}</td>
+        <td ng-if="usernameEdit"><input type="text" value="{{myLocalDetails.username}}" ng-model="myLocalDetails.username"></td>
+        <td>
+          <button ng-hide="!usernameEdit" class="btn btn-default" ng-click="changeUsername()">Save</button>
+          <button ng-hide="usernameEdit" class="btn btn-default" ng-click="usernameEdit=!usernameEdit">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-8" ng-if="!nameEdit">{{myLocalDetails.fullname}}</td>
+        <td ng-if="nameEdit"><input type="text" value="{{myLocalDetails.fullname}}" ng-model="myLocalDetails.fullname"></td>
+        <td>
+          <button ng-hide="!nameEdit" class="btn btn-default" ng-click="changeFullname()">Save</button>
+          <button ng-hide="nameEdit" class="btn btn-default" ng-click="nameEdit=!nameEdit">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-8" ng-if="!emailEdit">{{myLocalDetails.email}}</td>
+        <td ng-if="emailEdit"><input type="text" value="{{myLocalDetails.email}}" ng-model="myLocalDetails.email"></td>
+        <td>
+         <button ng-hide="!emailEdit" class="btn btn-default" ng-click="changeEmail(newEmail)">Save</button>
+         <button ng-hide="emailEdit" class="btn btn-default" ng-click="emailEdit=!emailEdit">Edit</button>
+       </td>
+     </tr>
+   </table>
+ </div>
 
-<div class="innerInfoBox">
+ <div class="innerInfoBox">
   <h3>Your friends</h3>
   <ul>
-    <li mg-repeat="friend in myLocalDetails.friends"></li>
+    <li ng-repeat="friend in myLocalDetails.friends">
+      {{friend}}
+    </li>
   </ul>
 </div>
 
