@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
-  .connect('mongodb://localhost/dareDevil')
+  .connect(process.env.MONGO_URL + 'friendFinder')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
