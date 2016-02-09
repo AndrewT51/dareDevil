@@ -14,6 +14,9 @@ myApp.service('usrSvc',function($http,store){
   this.addFriend = function(userId, friendId){
     return $http.put('users/addFriend/' + userId, {newFriend: friendId})
   }
+  this.unfriend = function(userId, friendId){
+    return $http.put('users/unfriend/'+ userId + '/' + friendId)
+  }
 
   this.openJWT = function(jwt){
     // this will take the middle section of the JWT, where the user
@@ -29,7 +32,6 @@ myApp.service('usrSvc',function($http,store){
     }else{
       return $http.get('users/allUsers/'+ store.getId )
     }
-      
   }
 
   this.getUserDetails = function(jwt,userId){

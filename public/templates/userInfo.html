@@ -31,11 +31,15 @@
 
  <div class="innerInfoBox">
   <h3>Your friends</h3>
-  <ul>
-    <li ng-repeat="friend in myLocalDetails.friends">
-      {{friend.username}}
-    </li>
-  </ul>
+    
+  <table>
+    <tr ng-repeat="friend in myLocalDetails.friends">
+      <td>{{friend.username}}</td>
+      <td>
+        <button class="btn btn-warning" ng-click="unfriend(friend._id)">Unfriend</button>
+      </td>
+    </tr>
+  </table>
 </div>
 
 

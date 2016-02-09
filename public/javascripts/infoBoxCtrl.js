@@ -18,8 +18,13 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
   $scope.name = false;
   $scope.email=false;
 
+  $scope.unfriend = function(id){
+    usrSvc.unfriend(userId, id)
+  }
 
-  // The following functions are to change the information in the database
+
+  // The following functions are to change the user information 
+  // in the database
   $scope.changeUsername = function(){
     usrSvc.edit(userId,"username",$scope.myLocalDetails.username)
     .then(function success(){
