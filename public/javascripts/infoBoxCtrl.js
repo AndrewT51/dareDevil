@@ -13,17 +13,36 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
       friends: user.data.friends
     }
   })
+
   $scope.usernameEdit = false;
   $scope.name = false;
   $scope.email=false;
+
+
+  // The following functions are to change the information in the database
   $scope.changeUsername = function(){
-    $scope.usernameEdit = !$scope.usernameEdit;
+    usrSvc.edit(userId,"username",$scope.myLocalDetails.username)
+    .then(function success(){
+      $scope.usernameEdit = !$scope.usernameEdit;
+    }, function error(){
+      console.log("The data was not saved")
+    })
   }
   $scope.changeEmail = function(){
-    $scope.emailEdit = !$scope.emailEdit;
+    usrSvc.edit(userId,"email",$scope.myLocalDetails.email)
+    .then(function success(){
+      $scope.emailEdit = !$scope.emailEdit;
+    }, function error(){
+      console.log("The data was not saved")
+    })
   }
   $scope.changeFullname = function(){
-    $scope.nameEdit = !$scope.nameEdit;
+    usrSvc.edit(userId,"fullname",$scope.myLocalDetails.fullname)
+    .then(function success(){
+      $scope.nameEdit = !$scope.nameEdit;
+    }, function error(){
+      console.log("The data was not saved")
+    })
   }
 
 })

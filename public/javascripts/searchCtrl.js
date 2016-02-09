@@ -1,4 +1,4 @@
-myApp.controller('searchCtrl',function($scope,usrSvc){
+myApp.controller('searchCtrl',function($scope,usrSvc,store){
   
   usrSvc.getUsers()
   .then(function success(users){
@@ -13,6 +13,12 @@ myApp.controller('searchCtrl',function($scope,usrSvc){
         $scope.people = users.data  
       }
     })
+  }
+
+  $scope.addFriend = function(friend){
+    usrSvc.addFriend(store.getId,friend._id)
+    console.log(friend)
+
   }
 
 

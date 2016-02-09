@@ -45,18 +45,24 @@ router.post('/signin', function(req,res){
   })
 })
 
+// This uses the auth middleware to check the logged in user
+// has a valid JWT. Then returns the logged on users details
 router.get('/mydetails/:id',auth, function(req,res){
-  User.findById(req.params.id,function(err,user){
-    if(err){
-      res.send(err)
-    }
-    res.send(user)
+  User.findById(req.params.id)
+    .populate('friends')
+    .exec(function(err,user){
+      if(err){
+        res.send(err)
+      }else{
+        res.send(user)  
+      }
+      
+    })
 
-  })
 })
 
 // Although there are only a few fields in each record, I just want to demonstrate
-// that I can return a selected few, so here I explicitly tell the db to return three 
+// that I know how to return a selected few, so here I explicitly tell the db to return three 
 // named fields 
 router.get('/members/:name', function(req,res){
   User.findOne({
@@ -82,10 +88,54 @@ router.get('/allUsers/:ownId',function(req,res){
   })
 })
 
+// This route will search for a user by username and return the
+// file. Username is unique so this will never return more than one
 router.get('/userlist/:name',function(req,res){
   User.find({username:req.params.name}, function(err, user){
     res.send(user)
   })
 })
+
+
+// This route will update any changes to the users data
+router.put('/changedata/:id/:field',function(req,res){
+  User.findById(req.params.id, function(err, user){
+    user[req.params.field] = req.body.new;
+    user.save(function(err,success){
+      if(err){
+        res.send("Change not saved")
+      }else{
+        res.send("success")      
+      }
+    })
+  })
+})
+
+
+// This will add a friend and also add you to their list of friends
+// Don't know if I'll have time to implement mutual agreement, so for now,
+// it is assumed everyone agrees to a friendship request
+router.put('/addFriend/:id', function(req,res){
+  User.findById(req.params.id, function(err,user){
+    user.friends.push(req.body.newFriend);
+    User.findById(req.body.newFriend, function(err, friend){
+      friend.friends.push(req.params.id);
+      friend.save()
+    })
+    user.save(function(err,success){
+      if(err){
+        res.send("Change not saved")
+      }else{
+        res.send("success")      
+      }
+    })
+
+  })
+})
+
+
+
+
+
 
 module.exports = router;

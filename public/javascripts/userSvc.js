@@ -7,6 +7,13 @@ myApp.service('usrSvc',function($http,store){
   this.signin = function(userDetails){
     return $http.post('users/signin', userDetails)
   }
+  this.edit = function(userId, field, newVal){
+    return $http.put('users/changedata/'+ userId + '/' + field, {new:newVal})
+  }
+
+  this.addFriend = function(userId, friendId){
+    return $http.put('users/addFriend/' + userId, {newFriend: friendId})
+  }
 
   this.openJWT = function(jwt){
     // this will take the middle section of the JWT, where the user
