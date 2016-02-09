@@ -102,6 +102,7 @@ router.get('/allUsers/:ownId',function(req,res){
 // file. Username is unique so this will never return more than one
 router.get('/userlist/:name',function(req,res){
   User.find({username:req.params.name}, function(err, user){
+    console.log(user)
     res.send(user)
   })
 })

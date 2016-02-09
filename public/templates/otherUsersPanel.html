@@ -1,6 +1,6 @@
-<div class="centerText">
+<div class="centerText" ng-repeat="person in people">
   <h3>{{person.username}}</h3>
   <p>{{person.fullname.join(' ')}}</p>
   <h5>{{person.email}}</h5>
-  <button class="btn btn-default" ng-click="addFriend(person)">Friend me</button>
+  <button class="btn btn-success" ng-click="addFriend(person,$index)">Friend me</button>
 </div>

@@ -3,14 +3,14 @@
    
       <input type="text" class="form-control" id="username" placeholder="Enter username" ng-model="searchTerm" required="true">
     
-    <!-- <input type="text" ng-model="searchTerm" placeholder="Enter name to search for"> -->
     <button class="form-control" ng-click="search(searchTerm)">Search</button>
   </div>
+  {{searchTerm}}
 </div>
 <div>
   <div class="innerInfoBox noPadding">
     <table>
-      <other-users ng-repeat="person in people">
+      <other-users >
       </other-users>
     </table>
   </div>

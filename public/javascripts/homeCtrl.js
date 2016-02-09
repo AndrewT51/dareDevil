@@ -10,7 +10,6 @@ myApp.controller('homeCtrl', function($scope,usrSvc,store,$state){
       email: $scope.email
     }
     signUpOrIn = $scope.memberStatus ? "signin" : "signup";
-    console.log(wrapObj)
     usrSvc[signUpOrIn](wrapObj)
     .then(function success(data){
       // The JWT is returned in the response and stored in a factory for global access
@@ -21,6 +20,9 @@ myApp.controller('homeCtrl', function($scope,usrSvc,store,$state){
 
     }, function error(err){
       $scope.password = '';
+      var passwordBox = document.getElementById('password');
+      passwordBox.style.borderColor = "red"
+
       console.log(err.data || err)
     })
   }

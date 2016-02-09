@@ -5,25 +5,25 @@
       <tr>
         <td class="col-xs-8" ng-if="!usernameEdit">{{myLocalDetails.username}}</td>
         <td ng-if="usernameEdit"><input type="text" value="{{myLocalDetails.username}}" ng-model="myLocalDetails.username"></td>
-        <td>
-          <button ng-hide="!usernameEdit" class="btn btn-default" ng-click="changeUsername()">Save</button>
-          <button ng-hide="usernameEdit" class="btn btn-default" ng-click="usernameEdit=!usernameEdit">Edit</button>
+        <td class="textLeft">
+          <button ng-hide="!usernameEdit" class="btn btn-default padRight" ng-click="changeUsername()">Save</button>
+          <button ng-hide="usernameEdit" class="btn btn-default padRight" ng-click="usernameEdit=!usernameEdit">Edit</button>
         </td>
       </tr>
       <tr>
         <td class="col-xs-8" ng-if="!nameEdit">{{myLocalDetails.fullname}}</td>
         <td ng-if="nameEdit"><input type="text" value="{{myLocalDetails.fullname}}" ng-model="myLocalDetails.fullname"></td>
-        <td>
-          <button ng-hide="!nameEdit" class="btn btn-default" ng-click="changeFullname()">Save</button>
-          <button ng-hide="nameEdit" class="btn btn-default" ng-click="nameEdit=!nameEdit">Edit</button>
+        <td class="textLeft">
+          <button ng-hide="!nameEdit" class="btn btn-default padRight" ng-click="changeFullname()">Save</button>
+          <button ng-hide="nameEdit" class="btn btn-default padRight" ng-click="nameEdit=!nameEdit">Edit</button>
         </td>
       </tr>
       <tr>
         <td class="col-xs-8" ng-if="!emailEdit">{{myLocalDetails.email}}</td>
         <td ng-if="emailEdit"><input type="text" value="{{myLocalDetails.email}}" ng-model="myLocalDetails.email"></td>
-        <td>
-         <button ng-hide="!emailEdit" class="btn btn-default" ng-click="changeEmail(newEmail)">Save</button>
-         <button ng-hide="emailEdit" class="btn btn-default" ng-click="emailEdit=!emailEdit">Edit</button>
+        <td class="textLeft">
+         <button ng-hide="!emailEdit" class="btn btn-default padRight" ng-click="changeEmail(newEmail)">Save</button>
+         <button ng-hide="emailEdit" class="btn btn-default padRight" ng-click="emailEdit=!emailEdit">Edit</button>
        </td>
      </tr>
    </table>
@@ -35,8 +35,8 @@
   <table>
     <tr ng-repeat="friend in myLocalDetails.friends">
       <td>{{friend.username}}</td>
-      <td>
-        <button class="btn btn-warning" ng-click="unfriend(friend._id)">Unfriend</button>
+      <td class="textLeft">
+        <button class="btn btn-danger padRight" ng-click="unfriend(friend,$index)">Unfriend</button>
       </td>
     </tr>
   </table>

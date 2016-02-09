@@ -18,10 +18,15 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
   $scope.name = false;
   $scope.email=false;
 
-  $scope.unfriend = function(id){
-    usrSvc.unfriend(userId, id)
+  $scope.unfriend = function(id,index){
+    usrSvc.unfriend(userId, id._id)
+    $scope.$emit('friendRemoved',$scope.myLocalDetails.friends[index])
+    $scope.myLocalDetails.friends.splice(index,1)
   }
 
+  $scope.$on('addFriend', function(result,other){
+    $scope.myLocalDetails.friends.push(other)
+  })
 
   // The following functions are to change the user information 
   // in the database
@@ -45,6 +50,10 @@ myApp.controller('infoBox',function($scope,usrSvc,store){
     usrSvc.edit(userId,"fullname",$scope.myLocalDetails.fullname)
     .then(function success(){
       $scope.nameEdit = !$scope.nameEdit;
+
+      // $emit('update',$scope.myLocalDetails)// Try ////////
+    
+
     }, function error(){
       console.log("The data was not saved")
     })
